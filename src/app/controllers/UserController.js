@@ -2,10 +2,8 @@ import * as Yup from 'yup';
 import User from '../models/User';
 
 class UserController {
-
-    //Metodo que cria um usuario
+    // Metodo que cria um usuario
     async store(req, res) {
-
         // Define obrigatoriedade dos campos
         const schema = Yup.object().shape({
             name: Yup.string().required(),
@@ -36,12 +34,11 @@ class UserController {
         const { id, name, email } = await User.create(req.body);
 
         // retorna um json com as infomações do usuario criado
-        return res.json({ id, name, email })
+        return res.json({ id, name, email });
     }
 
-    //Metodo que ayualiza um usuario
+    // Metodo que ayualiza um usuario
     async update(req, res) {
-
         // Define obrigatoriedade dos campos
         const schema = Yup.object().shape({
             name: Yup.string(),
@@ -80,7 +77,7 @@ class UserController {
             }
         }
 
-        //verifica se a senha informada é a mesma que foi salva no banco
+        // verifica se a senha informada é a mesma que foi salva no banco
         if (oldPassword && !(await user.checkPassword(oldPassword))) {
             return res.status(400).json({
                 error: 'Password does not match.',
