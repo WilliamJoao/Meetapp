@@ -6,7 +6,6 @@ import authConfig from '../../config/auth';
  * verificando se o usuario esta logado na aplicação
  */
 export default async (req, res, next) => {
-
     // buscando o token do usuario
     const authHeader = req.headers.authorization;
 
@@ -22,7 +21,6 @@ export default async (req, res, next) => {
     const [, token] = authHeader.split(' ');
 
     try {
-
         /**
          * promisify é uma função do Util vem por padrão no node,
          * o promisify pega um função de callback e
@@ -35,9 +33,7 @@ export default async (req, res, next) => {
         req.userId = decoded.id;
 
         return next();
-
     } catch (err) {
-
         return res.status(401).json({ error: 'Token invalid' });
     }
 };

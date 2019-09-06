@@ -2,17 +2,14 @@ import Sequelize, { Model } from 'sequelize';
 import bcrypt from 'bcryptjs';
 
 class User extends Model {
-
     // método que é chamado automaticamente pelo sequelize
     static init(sequelize) {
-
         /**
          * método instanciado da class pai Model
          * definindo o tipo de dados que as colunas podem receber
          */
         super.init(
             {
-
                 name: Sequelize.STRING,
                 email: Sequelize.STRING,
                 password: Sequelize.VIRTUAL,
@@ -35,7 +32,7 @@ class User extends Model {
             }
         });
 
-        return this
+        return this;
     }
 
     // Método que returna true caso as senhas sejam iguais
