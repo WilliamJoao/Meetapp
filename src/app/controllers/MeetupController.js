@@ -28,6 +28,7 @@ class MeetupController {
                 'location',
                 'title',
                 'description',
+                'past',
                 'date',
                 'file_id',
             ],
