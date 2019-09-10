@@ -35,6 +35,12 @@ class User extends Model {
         return this;
     }
 
+    // relacionamento entre as tabelas
+    static associate(models) {
+        this.hasMany(models.Meetup);
+        this.hasMany(models.Subscription);
+    }
+
     // Método que returna true caso as senhas sejam iguais
     checkPassword(password) {
         return bcrypt.compare(password, this.password_hash);
